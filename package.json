@@ -1,8 +1,8 @@
 {
   "name": "meteor-apollo-accounts",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Meteor accounts in GraphQL",
-  "main": "./client",
+  "main": "./dist",
   "repository": {
     "url": "https://github.com/pytheas-capital/meteor-apollo-accounts",
     "type": "git"
