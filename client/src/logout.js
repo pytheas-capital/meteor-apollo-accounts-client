@@ -1,13 +1,12 @@
 import {getLoginToken, resetStore} from './store'
 import gql from 'graphql-tag'
 
-export default async function(apollo) {
+async function(apollo) {
   const token = await getLoginToken()
-  await resetStore()
 
   if (!token) return
 
-  apollo.mutate({
+  await apollo.mutate({ // wait for apollo mutate
     mutation: gql`
       mutation logout($token: String!) {
         logout(token: $token) {
@@ -19,4 +18,5 @@ export default async function(apollo) {
       token
     }
   })
+  await resetStore() // move this line afret apollo.mutate
 }
