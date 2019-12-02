@@ -2,7 +2,7 @@
 const onChangeCallbacks = []
 
 let tokenStore = {
-  set: async function ({userId, token, tokenExpires}) {
+  set: async function ({ userId, token, tokenExpires }) {
     global.localStorage['Meteor.userId'] = userId
     global.localStorage['Meteor.loginToken'] = token
     global.localStorage['Meteor.loginTokenExpires'] = tokenExpires.toString()
@@ -21,17 +21,17 @@ export const setTokenStore = function (newStore) {
 }
 
 export const storeLoginToken = async function (userId, token, tokenExpires) {
-  await tokenStore.set({userId, token, tokenExpires})
+  await tokenStore.set({ userId, token, tokenExpires })
   await tokenDidChange()
 }
 
 export const getLoginToken = async function () {
-  const {token} = await tokenStore.get()
+  const { token } = await tokenStore.get()
   return token
 }
 
 export const getUserId = async function () {
-  const {userId} = await tokenStore.get()
+  const { userId } = await tokenStore.get()
   return userId
 }
 

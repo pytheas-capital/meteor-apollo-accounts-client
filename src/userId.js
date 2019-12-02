@@ -1,3 +1,3 @@
-import {getUserId} from './store'
+import { getUserId } from './store'
 
 export default getUserId

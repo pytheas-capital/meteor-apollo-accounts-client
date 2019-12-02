@@ -1,12 +1,12 @@
 import gql from 'graphql-tag'
-import {storeLoginToken} from '../store'
+import { storeLoginToken } from '../store'
 
 /**
  * Pass the accessToken
  * It's recommended to use https://github.com/anthonyjgrove/react-google-login
  */
 
-export default async function ({accessToken}, apollo) {
+export default async function ({ accessToken }, apollo) {
   const result = await apollo.mutate({
     mutation: gql`
     mutation loginWithGoogle ($accessToken: String!) {
@@ -22,7 +22,7 @@ export default async function ({accessToken}, apollo) {
     }
   })
 
-  const {id, token, tokenExpires} = result.data.loginWithGoogle
+  const { id, token, tokenExpires } = result.data.loginWithGoogle
   await storeLoginToken(id, token, new Date(tokenExpires))
   return id
 }
