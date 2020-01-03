@@ -1,32 +1,32 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _regenerator = require('babel-runtime/regenerator');
+var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
-var _taggedTemplateLiteral2 = require('babel-runtime/helpers/taggedTemplateLiteral');
+var _taggedTemplateLiteral2 = require("babel-runtime/helpers/taggedTemplateLiteral");
 
 var _taggedTemplateLiteral3 = _interopRequireDefault(_taggedTemplateLiteral2);
 
-var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
+var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var _templateObject = (0, _taggedTemplateLiteral3.default)(['\n    mutation login ($username: String, $email: String, $password: HashedPassword!) {\n      loginWithPassword (username: $username, email: $email, password: $password) {\n        id\n        token\n        tokenExpires\n      }\n    }\n    '], ['\n    mutation login ($username: String, $email: String, $password: HashedPassword!) {\n      loginWithPassword (username: $username, email: $email, password: $password) {\n        id\n        token\n        tokenExpires\n      }\n    }\n    ']);
+var _templateObject = (0, _taggedTemplateLiteral3.default)(["\n      mutation login(\n        $username: String\n        $email: String\n        $password: HashedPassword!\n        $twoFactorToken: String\n      ) {\n        loginWithPassword(\n          username: $username\n          email: $email\n          password: $password\n          twoFactorToken: $twoFactorToken\n        ) {\n          id\n          token\n          tokenExpires\n        }\n      }\n    "], ["\n      mutation login(\n        $username: String\n        $email: String\n        $password: HashedPassword!\n        $twoFactorToken: String\n      ) {\n        loginWithPassword(\n          username: $username\n          email: $email\n          password: $password\n          twoFactorToken: $twoFactorToken\n        ) {\n          id\n          token\n          tokenExpires\n        }\n      }\n    "]);
 
-var _hashPassword = require('./hashPassword');
+var _hashPassword = require("./hashPassword");
 
 var _hashPassword2 = _interopRequireDefault(_hashPassword);
 
-var _graphqlTag = require('graphql-tag');
+var _graphqlTag = require("graphql-tag");
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
-var _store = require('./store');
+var _store = require("./store");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48,7 +48,8 @@ exports.default = function () {
               variables: {
                 username: username,
                 email: email,
-                password: (0, _hashPassword2.default)(password)
+                password: (0, _hashPassword2.default)(password),
+                twoFactorToken: twoFactorToken
               }
             });
 
@@ -59,10 +60,10 @@ exports.default = function () {
             return (0, _store.storeLoginToken)(id, token, new Date(tokenExpires));
 
           case 6:
-            return _context.abrupt('return', id);
+            return _context.abrupt("return", id);
 
           case 7:
-          case 'end':
+          case "end":
             return _context.stop();
         }
       }
