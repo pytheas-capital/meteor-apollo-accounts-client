@@ -34,7 +34,8 @@ exports.default = function () {
   var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(_ref2, apollo) {
     var username = _ref2.username,
         email = _ref2.email,
-        password = _ref2.password;
+        password = _ref2.password,
+        twoFactorToken = _ref2.twoFactorToken;
 
     var result, _result$data$loginWit, id, token, tokenExpires;
 
